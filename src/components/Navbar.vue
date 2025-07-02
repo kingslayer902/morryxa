@@ -1,8 +1,7 @@
 <template>
   <header class="fixed top-0 left-0 w-full z-50 bg-white text-neutral-900 shadow-sm">
-    <nav
-      class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-xs uppercase tracking-widest font-medium"
-    >
+    <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center text-xs uppercase tracking-widest font-medium overflow-visible">
+      
       <!-- LOGO -->
       <div class="text-[11px] font-bold select-none">morryxa</div>
 
@@ -23,23 +22,26 @@
       </div>
 
       <!-- BURGER BUTTON -->
-      <button
-        @click="toggleMenu"
-        class="sm:hidden z-[60] relative w-6 h-6 flex flex-col justify-between"
-      >
-        <span
-          class="block w-full h-[2px] bg-black transform transition duration-300"
-          :class="{ 'rotate-45 translate-y-[8px]': menuOpen }"
-        ></span>
-        <span
-          class="block w-full h-[2px] bg-black transition duration-300"
-          :class="{ 'opacity-0': menuOpen }"
-        ></span>
-        <span
-          class="block w-full h-[2px] bg-black transform transition duration-300"
-          :class="{ '-rotate-45 -translate-y-[8px]': menuOpen }"
-        ></span>
-      </button>
+      <div class="sm:hidden relative z-50">
+        <button
+          @click="toggleMenu"
+          aria-label="Toggle menu"
+          class="relative w-8 h-8 flex flex-col justify-center items-center space-y-1"
+        >
+          <span
+            class="block w-6 h-[2px] bg-black transition duration-300"
+            :class="{ 'rotate-45 translate-y-[6px]': menuOpen }"
+          ></span>
+          <span
+            class="block w-6 h-[2px] bg-black transition duration-300"
+            :class="{ 'opacity-0': menuOpen }"
+          ></span>
+          <span
+            class="block w-6 h-[2px] bg-black transition duration-300"
+            :class="{ '-rotate-45 -translate-y-[6px]': menuOpen }"
+          ></span>
+        </button>
+      </div>
     </nav>
 
     <!-- DROPDOWN MENU MOBILE -->
