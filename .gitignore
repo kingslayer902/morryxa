@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Build files
+dist/
+.vite/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Log files
+npm-debug.log*
+
+# Git files
+*.log
