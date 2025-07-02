@@ -1,18 +1,32 @@
 <template>
   <header class="fixed top-0 left-0 w-full z-50 bg-white text-neutral-900 shadow-sm">
-    <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-xs uppercase tracking-widest font-medium">
-      
+    <nav
+      class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center text-xs uppercase tracking-widest font-medium"
+    >
       <!-- LOGO -->
       <div class="text-[11px] font-bold select-none">morryxa</div>
 
       <!-- DESKTOP MENU -->
       <div class="hidden sm:flex space-x-6">
-        <router-link to="/" class="hover:opacity-70 transition">Work</router-link>
-        <router-link to="/about" class="hover:opacity-70 transition">About</router-link>
+        <router-link
+          to="/"
+          class="hover:opacity-70 transition tracking-[.2em] text-[10px] font-light italic"
+        >
+          ✦ my art ✦
+        </router-link>
+        <router-link
+          to="/about"
+          class="hover:opacity-70 transition text-[10px] font-light italic"
+        >
+          about
+        </router-link>
       </div>
 
       <!-- BURGER BUTTON -->
-      <button @click="toggleMenu" class="sm:hidden z-50 relative w-6 h-6 flex flex-col justify-between">
+      <button
+        @click="toggleMenu"
+        class="sm:hidden z-[60] relative w-6 h-6 flex flex-col justify-between"
+      >
         <span
           class="block w-full h-[2px] bg-black transform transition duration-300"
           :class="{ 'rotate-45 translate-y-[8px]': menuOpen }"
@@ -28,14 +42,18 @@
       </button>
     </nav>
 
-    <!-- DROPDOWN MENU KECIL -->
+    <!-- DROPDOWN MENU MOBILE -->
     <transition name="fade">
       <div
         v-if="menuOpen"
-        class="sm:hidden bg-white w-full shadow-md py-4 px-6 text-xs uppercase tracking-widest flex flex-col items-start space-y-4"
+        class="sm:hidden fixed top-[56px] left-0 w-full bg-white shadow-md py-6 px-6 text-xs uppercase tracking-widest flex flex-col items-start space-y-4 z-40"
       >
-        <router-link @click="closeMenu" to="/" class="hover:opacity-70 transition">Work</router-link>
-        <router-link @click="closeMenu" to="/about" class="hover:opacity-70 transition">About</router-link>
+        <router-link @click="closeMenu" to="/" class="hover:opacity-70 transition">
+          ✦ my art ✦
+        </router-link>
+        <router-link @click="closeMenu" to="/about" class="hover:opacity-70 transition">
+          about
+        </router-link>
       </div>
     </transition>
   </header>
