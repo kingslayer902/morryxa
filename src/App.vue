@@ -1,16 +1,13 @@
 <template>
   <div class="font-sans text-neutral-800 bg-[#f9f9f9] min-h-screen overflow-x-hidden flex flex-col">
-    <Navbar />
     <main class="flex-grow">
       <router-view />
     </main>
-    <Footer />
   </div>
 </template>
 
 <script setup>
-import Navbar from './components/Navbar.vue'
-import Footer from './components/footer.vue'
+// Navbar & Footer kita hapus karena gak dipakai
 </script>
 
 <style>

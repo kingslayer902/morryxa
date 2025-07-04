@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import WorkDetailView from '../views/WorkDetailView.vue'
-import AboutView from '../views/AboutView.vue'
 
 const routes = [
   {
@@ -15,15 +14,18 @@ const routes = [
     component: WorkDetailView
   },
   {
-    path: '/about',
-    name: 'about',
-    component: AboutView
+    path: '/:catchAll(.*)', // fallback biar gak error page putih
+    redirect: '/'
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior() {
+    // scroll ke atas tiap ganti halaman
+    return { top: 0 }
+  }
 })
 
 export default router
