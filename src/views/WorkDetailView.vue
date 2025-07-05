@@ -1,67 +1,99 @@
 <template>
-  <main class="min-h-screen bg-black text-white px-6 py-16 flex flex-col items-center font-sans">
-    <!-- Title -->
-    <section class="text-center mb-16">
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-widest uppercase text-neutral-200 mb-3">
-        My Works
-      </h1>
-      <p class="text-sm text-gray-400 max-w-xl mx-auto">
-        Handpicked edits curated for aesthetic storytelling. Visuals speak louder than words.
+  <main class="bg-black text-white overflow-x-hidden">
+
+    <!-- About -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 py-28 bg-gradient-to-b from-black to-neutral-900" data-aos="fade-up">
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-blue-400 mb-6">Morryxa</h1>
+      <p class="max-w-3xl text-lg text-gray-300 leading-loose font-light">
+        A multidisciplinary visual editor blending motion, rhythm, and narrative into bold visual stories.<br/>
+        Let’s build something stunning together.
       </p>
+    
     </section>
 
-    <!-- Video Gallery -->
-    <section class="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 fade-in">
-      <div
-        v-for="(media, index) in visibleMedia"
-        :key="index"
-        class="overflow-hidden rounded-xl shadow-md hover:scale-[1.02] transition-transform duration-300"
-      >
-        <iframe
-          :src="`https://drive.google.com/file/d/${media.fileId}/preview`"
-          width="100%"
-          height="360"
-          allow="autoplay"
-          class="rounded-xl w-full aspect-square bg-black"
-        ></iframe>
+    <!-- My Works -->
+    <section id="works" class="bg-neutral-900 px-6 py-24" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-center text-white mb-14 tracking-widest">My Works</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div
+          v-for="(media, index) in displayedMedia"
+          :key="index"
+          class="overflow-hidden rounded-xl shadow-xl"
+          data-aos="fade-up"
+        >
+          <iframe
+            :src="`https://drive.google.com/file/d/${media.fileId}/preview`"
+            class="w-full aspect-video rounded-xl"
+            allow="autoplay"
+          ></iframe>
+        </div>
       </div>
     </section>
 
-    <!-- Divider -->
-    <div class="w-16 border-t border-gray-700 my-16"></div>
+    <!-- Rates -->
+    <section class="bg-black px-6 py-24 text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-blue-400 mb-12 tracking-widest">Rates (USD)</h2>
+      <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 text-sm text-gray-300">
+        <div class="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 rounded-lg shadow-xl">
+          <h3 class="text-white font-semibold text-lg mb-2">Simple Edit</h3>
+          <p>$30 — Clean cut, transitions, text, and grade</p>
+        </div>
+        <div class="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 rounded-lg shadow-xl">
+          <h3 class="text-white font-semibold text-lg mb-2">Narrative Edit</h3>
+          <p>$60 — Cinematic flow, FX, music-sync storytelling</p>
+        </div>
+        <div class="bg-gradient-to-br from-neutral-800 to-neutral-900 p-6 rounded-lg shadow-xl">
+          <h3 class="text-white font-semibold text-lg mb-2">Full Branding</h3>
+          <p>$100+ — Visual identity + promo formats</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Rate -->
-    <section class="max-w-2xl text-sm text-gray-300 space-y-2 mb-14 fade-in text-center">
-      <h2 class="text-lg text-white font-semibold tracking-wider uppercase mb-1">Rates</h2>
-      <p>Starting from <span class="text-white font-semibold">$25</span> per edit.</p>
-      <p>Custom pricing available for complex or multi-layered visuals.</p>
-      <p class="italic text-gray-500">Let's craft something memorable.</p>
+    <!-- Terms of Service -->
+    <section class="bg-neutral-900 px-6 py-24 text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-white mb-10 tracking-widest">Terms of Service</h2>
+      <div class="max-w-3xl mx-auto grid gap-6 text-left text-sm text-gray-300">
+        <div class="bg-neutral-800 p-5 rounded-xl flex items-start gap-4">
+          <span class="text-blue-400 text-xl">⏳</span>
+          <p>50% upfront payment required before project starts</p>
+        </div>
+        <div class="bg-neutral-800 p-5 rounded-xl flex items-start gap-4">
+          <span class="text-blue-400 text-xl">🛠️</span>
+          <p>Turnaround time: 3–7 days depending on complexity</p>
+        </div>
+        <div class="bg-neutral-800 p-5 rounded-xl flex items-start gap-4">
+          <span class="text-blue-400 text-xl">🚫</span>
+          <p>No refunds once editing has begun (unless canceled by editor)</p>
+        </div>
+        <div class="bg-neutral-800 p-5 rounded-xl flex items-start gap-4">
+          <span class="text-blue-400 text-xl">📦</span>
+          <p>Raw files only provided if requested before start</p>
+        </div>
+        <div class="bg-neutral-800 p-5 rounded-xl flex items-start gap-4">
+          <span class="text-blue-400 text-xl">✅</span>
+          <p>One free revision included per project</p>
+        </div>
+      </div>
     </section>
 
     <!-- Contact -->
-    <section class="max-w-2xl text-sm text-gray-300 space-y-2 mb-14 fade-in text-center">
-      <h2 class="text-lg text-white font-semibold tracking-wider uppercase mb-1">Contact</h2>
-      <p>DM me on <a href="https://instagram.com/morryxa" class="underline hover:text-white" target="_blank">@morryxa</a></p>
-      <p>Or email: <span class="underline">hello@morryxa.studio</span></p>
-      <p class="italic text-gray-500">Open to collabs, commissions, or just a nice chat.</p>
+    <section id="contact" class="bg-black px-6 py-24 text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold text-blue-400 mb-10 tracking-widest">Contact Me</h2>
+      <p class="text-gray-300 text-base mb-6">For inquiries, commissions, or creative collabs — DM me on Instagram:</p>
+      <a
+        href="https://instagram.com/morryxa"
+        target="_blank"
+        class="inline-block px-8 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition"
+      >
+        @morryxa
+      </a>
     </section>
 
-    <!-- Terms -->
-    <section class="max-w-2xl text-sm text-gray-400 text-center fade-in">
-      <h2 class="text-lg text-white font-semibold tracking-wider uppercase mb-2">Terms of Service</h2>
-      <ul class="space-y-1">
-        <li>・ No refunds once project is delivered.</li>
-        <li>・ Max 2x revisions per edit.</li>
-        <li>・ Personal use only unless commercial rights are discussed.</li>
-        <li>・ Credit appreciated but not mandatory.</li>
-      </ul>
-    </section>
-
-    <!-- Back Button -->
-    <div class="mt-20">
+    <!-- Back to Home -->
+    <div class="text-center py-10">
       <button
-        @click="goBack"
-        class="text-sm text-gray-400 hover:text-white underline transition"
+        @click="router.push('/')"
+        class="text-gray-400 hover:text-white transition text-sm underline"
       >
         ← Back to Home
       </button>
@@ -73,41 +105,24 @@
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-// Tampilkan hanya beberapa video biar clean dan fokus
-const allMedia = [
-  // cut & flow
+const displayedMedia = [
   { fileId: '1lhhhz6I0_FHpsbpfMZEfwO2D7QKMQUqs' },
   { fileId: '1dBFMPHIxpF253cGN5wz20zF7jw0D5C_G' },
   { fileId: '1zDUXl8k8hAtX4GCiNbMdhxLZMYTM2B65' },
-  // editorial
-  { fileId: '1FiVe1fiSyHp12hb4A_Q4VVbMMuqhn5m4' },
-  { fileId: '1dBOaCagofBcru670qWTuyH_aetmPOTB_' },
-  // by morryxa
-  { fileId: '1mPpWqH7ACCPZ8JbhBszxObGEXv054Ea1' },
-  { fileId: '1maCpHCxdOSN4SdLCfTDTLJqrG9gmShET' }
+  { fileId: '1uMBcCAeoA6oHyUGeNjFbXWd5DRhD39Q-' },
+  { fileId: '1BCFVzy33CPr7gntAuqW9fg4MRZM2SOxh' },
+  { fileId: '1_rmU11v8gMJhVhYgzPP2RE4JRPVpPqdQ' }
 ]
-
-// batasin tampilan (bisa load more nanti)
-const visibleMedia = allMedia.slice(0, 7)
-
-const goBack = () => {
-  router.push('/')
-}
 </script>
 
 <style scoped>
-.fade-in {
-  animation: fadeIn 0.6s ease-in-out both;
+[data-aos] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
