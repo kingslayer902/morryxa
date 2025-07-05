@@ -5,13 +5,13 @@
       <img
         :src="avatarUrl"
         alt="Morryxa"
-        class="w-28 h-28 rounded-full border-2 border-white object-cover mb-4"
+        class="avatar-img mb-4"
       />
       <h1 class="text-xl font-bold">@morryxa</h1>
       <p class="text-sm text-gray-400">Visual Artist & Editor</p>
     </section>
 
-    <!-- Link Buttons with Dropdowns -->
+    <!-- Link Buttons -->
     <section class="mt-8 w-full max-w-sm space-y-3">
       <!-- Commission -->
       <button
@@ -45,40 +45,11 @@
 
       <!-- My Works -->
       <button
-        @click="showWorks = !showWorks"
+        @click="goToWorks"
         class="w-full bg-neutral-800 rounded-xl text-center py-3 hover:bg-neutral-700 transition cursor-pointer"
       >
         My Works
       </button>
-      <transition name="fade">
-        <div
-          v-if="showWorks"
-          class="w-full bg-neutral-900 rounded-xl p-4 space-y-4"
-        >
-          <div
-            v-for="item in works"
-            :key="item.id"
-            @click="goToWork(item.slug)"
-            class="relative overflow-hidden rounded-md cursor-pointer shadow-md hover:opacity-80 transition"
-          >
-            <video
-              :src="item.src"
-              autoplay
-              muted
-              loop
-              playsinline
-              class="w-full aspect-square object-cover rounded-md"
-            ></video>
-            <div
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition"
-            >
-              <span class="text-white text-xs font-semibold tracking-widest pointer-events-none">
-                {{ item.label }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </transition>
 
       <!-- About Me -->
       <button
@@ -108,38 +79,13 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const showWorks = ref(false)
 const showCommission = ref(false)
 const showAbout = ref(false)
 
 const avatarUrl = new URL('/assets/works/morryxa-avatar.jpg', import.meta.url).href
 
-const works = [
-  {
-    id: 1,
-    type: 'video',
-    src: new URL('/assets/works/sample1.mp4', import.meta.url).href,
-    label: 'cut & flow',
-    slug: 'project-a'
-  },
-  {
-    id: 2,
-    type: 'video',
-    src: new URL('/assets/works/sample4.mp4', import.meta.url).href,
-    label: 'editorial',
-    slug: 'project-b'
-  },
-  {
-    id: 3,
-    type: 'video',
-    src: new URL('/assets/works/sample3.mp4', import.meta.url).href,
-    label: 'by morryxa',
-    slug: 'project-c'
-  }
-]
-
-const goToWork = (slug) => {
-  router.push(`/work/${slug}`)
+const goToWorks = () => {
+  router.push('/works')
 }
 </script>
 
@@ -152,5 +98,14 @@ const goToWork = (slug) => {
 .fade-leave-to {
   opacity: 0;
   transform: translateY(-10px);
+}
+
+.avatar-img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 9999px;
+  border: 2px solid #3b82f6; /* Tailwind blue-500 */
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 </style>

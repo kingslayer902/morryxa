@@ -9,12 +9,12 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/work/:slug',
-    name: 'work-detail',
+    path: '/works', // GANTI DARI slug
+    name: 'works',
     component: WorkDetailView
   },
   {
-    path: '/:catchAll(.*)', // fallback biar gak error page putih
+    path: '/:catchAll(.*)',
     redirect: '/'
   }
 ]
@@ -23,7 +23,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior() {
-    // scroll ke atas tiap ganti halaman
     return { top: 0 }
   }
 })
